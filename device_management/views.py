@@ -57,6 +57,7 @@ class CheckingLogView(views.APIView):
       def post(self, request):
             checking_log_serializer = CheckOutLogSerializer(data = request.data)
             if checking_log_serializer.is_valid():
+                  # find device by serial number
                   serial_number = checking_log_serializer.validated_data['device_serial_number']
                   device = get_device_by_serial_number(serial_number)
                   if device:

@@ -25,7 +25,9 @@ class CheckOutLogSerializer(serializers.ModelSerializer):
       class Meta:
             model = CheckOutLog
             fields = ['device_serial_number', 'employee', 'checkout_date', 'return_date', 'checkout_condition', 'return_condition']
-            
+      
+      
+      # Do validation by checking ou the device by serial number 
       def create(self, validated_data):
             device_serial_number = validated_data.pop('device_serial_number')
             device = get_device_by_serial_number(device_serial_number)
